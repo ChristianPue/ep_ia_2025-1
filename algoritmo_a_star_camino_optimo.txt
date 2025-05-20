@@ -1,0 +1,92 @@
+Formula: f = g + h
+
+Paso 0:
+  Nodo actual: Timisoara
+  g = 0, h = 329
+  f = g + h = 329
+  Vecinos:
+  -> Arad: g = 118, h = 366
+  f = g + h = 484
+  -> Lugoj: g = 111, h = 244
+  f = g + h = 355
+  Elegimos el menor f: Lugoj
+
+Paso 1:
+  Nodo actual: Lugoj
+  g = 111, f = 355
+  Vecinos:
+  -> Mehadia: g = g(Lugoj) + g = 111 + 70 = 181, h = 241
+  f = 422
+  -> Arad: f = 484
+  Elegimos el menor f: Mehadia
+
+Paso 2:
+  Nodo actual: Mehadia
+  g = 181, f = 422
+  Vecinos:
+  -> Dobreta: g = 181 + 75 = 256, h = 242
+  f = 498
+  -> Arad: f = 484
+  Elegimos el menor f: Arad
+
+Paso 3:
+  Nodo actual: Arad
+  g = 118, f = 484
+  Vecinos:
+  -> Zerind: g = 118 + 75 = 193, h = 374
+  f = 567
+  -> Sibiu: g = 118 + 140 = 258
+  f = 511
+  -> Dobreta: f = 498
+  Elegimos el menor f: Dobreta
+
+Paso 4:
+  Nodo actual: Dobreta
+  g = 256, f = 498
+  Vecinos:
+  -> Craiova: g = 256 + 120 = 376, h = 160
+  f = 536
+  -> Zerind: f = 567
+  -> Sibiu: f = 511
+  Elegimos el menor f: Sibiu
+
+Paso 5:
+  Nodo actual: Sibiu
+  g = 258, f = 511
+  Vecinos:
+  -> Fagaras: g = 258 + 99 = 357, h = 193
+  f = 535
+  -> Rimnicu Vilcea: g = 258 + 80 = 338, h = 193
+  f = 531
+  -> Craiova: f = 536
+  -> Zerind: f = 567
+  Elegigmos el menor f: Rimnicu Vilcea
+
+Paso 6:
+  Nodo actual: Rimnicu Vilcea
+  g = 338, f = 531
+  Vecinos:
+  -> Pitesti: g = 338 + 97 = 435, h = 98
+  f = 533
+  -> Fagaras: f = 535
+  -> Craiova: f = 536
+  Elegimos el menor f: Pitesti
+
+Paso 7:
+  Nodo actual: Pitesti
+  g = 435, f = 533
+  Vecinos:
+  -> Bucharest: g = 435 + 101 = 536, h = 0
+  f = 536
+  -> Fagaras: f = 535
+  -> Craiova: f = 536
+  Elegimos el menor f: Fagaras
+
+Paso 8:
+  Nodo actual: Fagaras
+  g = 357, f = 535
+  Vecinos:
+  -> Bucharest: g = 357 + 211 = 568, h = 0
+  f = 568
+  (i) 568 > 536
+  Esta no es la ruta. Es la anterior.
