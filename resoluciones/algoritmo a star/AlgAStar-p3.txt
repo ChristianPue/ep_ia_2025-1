@@ -1,0 +1,67 @@
+Matriz:
+  0 1 2 3
+0 0 0 0 0
+1 0 0 1 0
+2 1 0 1 0
+3 0 0 0 0
+
+inicio: (1;0) = (fila, columnas)
+final: (2;3)
+
+Costos de movimientos:
+  Horizontal: 10
+  Verticial: 10
+  Diagonal: 14
+
+Tipo de heurística:
+  Distancia Manhattan: Esta calcula el h llendo de manera horizontal y vertical 
+  (no en diagonal) desde el punto final un punto abierto.
+
+Iteracion 0:
+  Abiertos: (1,0)
+
+Iteracion 1:
+  Abiertos: 
+    (0,0): g: 10, h: 50, f: g + h = 60, 
+    (0,1): g: 14, h: 40, f: g + h = 44, 
+    (1,1): g: 10, h: 30, f: g + h = 40,
+    (2,1): g: 14, h: 20, f: 34
+  Cerrados (usados): 
+    (1,0)
+Elegimos el de menor f: (2,1) tiene g: 14
+
+Iteracion 2:
+  Abiertos: 
+    (3,0): g: 14 + 14 = 28, h: 40, f: 68,
+    (3,1): g: 14 + 10 = 24, h: 30, f: 54,
+    (3,2): g: 14 + 14 = 28, h: 20, f: 48,
+    Anteriores:
+    (0,0): g: 10, h: 50, f: g + h = 60, 
+    (0,1): g: 14, h: 40, f: g + h = 54, 
+    (1,1): g: 10, h: 30, f: g + h = 40,
+  Cerrados:
+    (1,0), (2,1)
+Elegimos el de menor f: (1,1) tiene g: 10
+
+Iteracion 3:
+  Abiertos:
+    (0,2): g: 10 + 14 = 24, h: 30, f: 54
+    Anteriores:
+    (0,0): g: 10, h: 50, f: g + h = 60, 
+    (0,1): g: 14, h: 40, f: g + h = 54, 
+    (3,0): g: 14 + 14 = 28, h: 40, f: 68,
+    (3,1): g: 14 + 10 = 24, h: 30, f: 54,
+    (3,2): g: 14 + 14 = 28, h: 20, f: 48,
+  Cerrados:s
+    (1,0), (2,1), (1,1)
+Elegimos el de menor f: (3,2) tiene g: 28
+
+Iteracion 4:
+  Abiertos:
+    final (2,3): g: 28 + 14 = 42, h: 0, f: 42
+  Cerrados:
+    (1,0), (2,1), (1,1), (3,2)
+
+Llegamos al final. Ahora solo tomaremos los puntos pero eliminamos
+los que no nos importan (como (1,1) en este caso).
+(1,0), (2,1), (3,2), (2,3)
