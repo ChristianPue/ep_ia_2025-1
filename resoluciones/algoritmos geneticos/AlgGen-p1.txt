@@ -1,0 +1,29 @@
+Problema 1: 
+Resolver con el algoritmo genético el problema de 8 reinas, 
+teniendo la población 4 que representan soluciones, donde 
+la función ideoneidad es el número de pares de reinas no
+atacadas.
+
+Fase 1: Poblacion inicial:
+[
+  [6, 0, 7, 3, 6, 1, 5, 2],
+  [3, 2, 0, 5, 6, 3, 5, 1],
+  [4, 0, 5, 3, 1, 1, 7, 2],
+  [0, 0, 6, 2, 4, 1, 7, 5]
+]
+
+Gen: La posición de la reina en cada fila (en este caso).
+Cromosoma: El tamaño del tablero.
+
+Fase 2: Función de Fitness
+La función ideoneidad es el número de pares de reinas no
+atacadas.
+En este caso, tenemos una población inicial de 4 cromosomas.
+Calcularemos según la función ideoneidad el fitness de cada
+una.
+Para el 1er tablero:
+  Criterios:
+  (i) Cantidad de reinas no son atacadas a una reina.
+  (i) No contamos la anterior reina para el siguiente análisis.
+  En Q1: Q2, Q3, Q7, Q8 = 4
+  En Q2: Q3, Q4, Q4, Q5, Q6, Q8 = 
