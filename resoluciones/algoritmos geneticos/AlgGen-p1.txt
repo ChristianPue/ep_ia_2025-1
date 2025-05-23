@@ -21,9 +21,116 @@ atacadas.
 En este caso, tenemos una población inicial de 4 cromosomas.
 Calcularemos según la función ideoneidad el fitness de cada
 una.
-Para el 1er tablero:
-  Criterios:
-  (i) Cantidad de reinas no son atacadas a una reina.
+
+Criterios:
+  (i) Cantidad de reinas que NO ATACAN a una reina.
   (i) No contamos la anterior reina para el siguiente análisis.
+
+Para el 1er tablero:
   En Q1: Q2, Q3, Q7, Q8 = 4
-  En Q2: Q3, Q4, Q4, Q5, Q6, Q8 = 
+  En Q2: Q3, Q4, Q4, Q5, Q6, Q8 = 6
+  En Q3: Q4, Q5, Q6, Q7 = 4
+  En Q4: Q5, Q7, Q8 = 3
+  En Q5: Q6, Q7, Q8 = 3
+  En Q6: Q7, Q8 = 2
+  En Q7: Q8 = 1
+  En Q8: 0
+  fitness = 23
+
+Para el 2do tablero:
+  En Q1: Q3, Q4, Q5, Q7, Q8 = 5
+  En Q2: Q3, Q4, Q5, Q6, Q7, Q8 = 6
+  En Q3: Q4, Q5, Q7, Q8 = 4
+  En Q4: 0 (todas las atacan)
+  En Q5: Q6, Q7, Q8 = 3
+  En Q6: Q7 = 1
+  En Q7: Q8 = 1
+  En Q8: 0
+  fitness = 20
+
+Para el 3er tablero:
+  En Q1: Q2, Q3, Q4, Q5, Q6, Q7, Q8 = 7
+  En Q2: Q3, Q4, Q5, Q6, Q7, Q8 = 6
+  En Q3: Q4, Q5, Q6, Q7, Q8 = 5
+  En Q4: Q5, Q7, Q8 = 3
+  En Q5: Q7, Q8 = 2
+  En Q6: Q7, Q8 = 2
+  En Q7: Q8 = 1
+  En Q8: 0
+  fitness = 26
+
+Para el 4to tablero:
+  En Q1: Q3, Q4, Q6, Q7, Q8 = 5
+  En Q2: Q3, Q5, Q6, Q7, Q8 = 5
+  En Q3: Q4, Q6, Q7, Q8 = 4
+  En Q4: Q5, Q6, Q7, Q8 = 4
+  En Q5: Q6, Q7, Q8 = 3
+  En Q6: Q7, Q8 = 2
+  En Q7: Q8 = 1
+  En Q8: 0
+  fitness = 24
+
+Fitness - Evaluación de aptitud:
+  Total: 23 + 20 + 26 + 24 = 93
+
+  Probabilidades de aptitud de cada tablero:
+    1er tablero: 23/93 * 100% = 24,73%
+    2do tablero: 20/93 * 100% = 21,51%
+    3er tablero: 26/93 * 100% = 27,96%
+    4to tablero: 24/93 * 100% = 25,81%
+
+Fase 3: Selección:
+  No tomamos el 2do tablero por su probabilidad de ser elegido 
+  como un caso satisfactorio.
+
+  Nos quedamos con: 1er, 3er y 4to tablero.
+
+Fase 4: Crossover
+  Tomamos 3er y 4to tablero como par (son los que poseen una 
+  probabilidad más alta).
+  1er par:
+    [4, 0, 5, 3, 1, 1, 7, 2]
+    [0, 0, 6, 2, 4, 1, 7, 5]
+    Los volteamos:
+    [0, 0, 6, 2, 4, 1, 7, 5]
+    [4, 0, 5, 3, 1, 1, 7, 2]
+    El punto de cruce se seleccionará después de cuatro genes.
+    [1er, 2do, 3er, 4to, | 5to, 6to, 7mo, 8vo]
+
+    1er y 2do hijo:
+    [4, 0, 5, 3, 4, 1, 7, 5]
+    [0, 0, 6, 2, 1, 1, 7, 2]
+
+  Tomamos 4to y 1ero tablero como par.
+  2do par:
+    [0, 0, 6, 2, 4, 1, 7, 5]
+    [6, 0, 7, 3, 6, 1, 5, 2]
+    Los volteamos:
+    [6, 0, 7, 3, 6, 1, 5, 2]
+    [0, 0, 6, 2, 4, 1, 7, 5]
+    El punto de cruce se seleccionará después de tres genes.
+    [1er, 2do, 3er,| 4to, 5to, 6to, 7mo, 8vo]
+
+    1er y 2do hijo:
+    [6, 0, 7, 2, 4, 1, 7, 5]
+    [0, 0, 6, 3, 6, 1, 5, 2]
+
+Fase 5: Mutación
+  Cambiamos aleatoriamente el valor de un gen de un cromosoma.
+  A veces es necesario. A veces no. Dependerá de la probabilidad 
+  de mutación.
+
+  Hay 4 hijos en total:
+    [4, 0, 5, 3, 4, 1, 7, 5]
+    [0, 0, 6, 2, 1, 1, 7, 2]
+    [6, 0, 7, 2, 4, 1, 7, 5]
+    [0, 0, 6, 3, 6, 1, 5, 2]
+    
+    Cambiamos sus valores (depende de que valores puede tener un gen):
+    [4, 0, 5, 3, 2, 1, 7, 5]  Se cambio la 4ta columna de 4 a 2.
+    [5, 0, 6, 2, 1, 1, 7, 2]  Se cambio la 1era columna de 0 a 5.
+    [6, 3, 7, 2, 4, 1, 7, 5]  Se cambio la 2da columna de 0 a 3.
+    [0, 0, 6, 3, 6, 1, 5, 2]  No se cambio
+
+Finalmente, se reemplaza la nueva generación con la que teniamos antes.
+Así hasta que veamos una mejora en las puntuaciones de fitness en cada cromosoma.

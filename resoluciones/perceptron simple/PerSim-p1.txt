@@ -1,0 +1,88 @@
+Problema 1: 
+Aplique el algoritmo de aprendizaje del Perceptrón Simple para hallar el hiperplano de discriminación para la función OR.
+x1: -1, 1,-1, 1
+x2: -1,-1, 1, 1
+OR: -1, 1, 1, 1
+
+Datos:
+  w1 = 0, w2 = 2, umbral = -0.5
+
+Reglas:
+En f(R):
+  y = +1, si R > 0
+  y = -1, si R <= 0
+
+Resolución:
+  1era entrada:
+    Datos y etiquetas:
+    x1 = -1, x2 = -1, OR = d(x) = -1
+
+    Resultado (encontrar y):
+    y = f(w1*x1 + w2*x2 + umbrarl)
+    y = f(0*-1 + 2*-1 + -0.5)
+    y = f(-2 - 0.5) = f(-2.5)
+    y = -1
+  
+    Es y == d(x) => -1 == -1 ?
+    Si. Entonces está: ¡Bien clasificado!
+  
+  2da entrada:
+    Datos y etiquetas:
+    x1 = 1, x2 = -1, OR = d(x) = 1
+
+    Resultado (encontrar y):
+    y = f(w1*x1 + w2*x2 + umbral)
+    y = f(0*1 + 2*-1 + -0.5)
+    y = f(-2 + -0.5) = f(-2.5)
+    y = -1
+
+    Es y == d(x) => -1 == 1 ?
+    No. Entonces está: ¡Mal clasificado!
+    Para este caso. Cambiamos los datos.
+    Tomamos d(x) = 1 para:
+    Calcular los nuevos pesos y umbral:
+    w1 = w1 + d(x)*x1 = 0 + 1*1 = 1
+    w2 = w2 + d(x)*x2 = 2 + 1*-1 = 1
+    umbral = umbral + d(x) = -0.5 + 1 = 0.5
+
+    Recalculamos con los nuevos datos:
+    w1 = 1, w2 = 1, umbral = 0.5
+
+    Resultado (encontrar y):
+    y = f(w1*x1 + w2*x2 + umbral)
+    y = f(1*1 + 1*-1 + 0.5)
+    y = f(1 + -1 + 0.5)
+    y = f(0.5) = 1
+
+    Es y == d(x) => 1 == 1 ?
+    Si. Entonces está: ¡Bien clasificado!
+
+  3era entrada:
+    Datos y etiquetas:
+    x1 = -1, x2 = 1, OR = d(x) = 1
+
+    Resultado (encontrar y):
+    y = f(w1*x1 + w2*x2 + umbral)
+    y = f(1*-1 + 1*1 + 0.5)
+    y = f(0.5) = 1
+    
+    Es y == d(x) => 1 == 1 ?
+    Si. Entonces está: ¡Bien clasificado!
+
+  4ta entrada:
+    Datos y etiquetas:
+    x1 = 1, x2= 1, OR = d(x) = 1
+
+    Resultado (encontrar y):
+    y = f(w1*x1 + w2*x2 + umbral)
+    y = f(1*1 + 1*1 + 0.5)
+    y = f(1 + 1 + 0.5)
+    y = f(2.5) = 1
+
+    Es y == d(x) => 1 == 1?
+    Si. Entonces está: ¡Bien clasificado!
+  
+La ecuación del hiperplano es:
+  x1*w1 + x2*w2 + umbral = 0
+  x1*1 + x2*1 + 0.5 = 0
+  x1 + x2 + 0.5 = 0

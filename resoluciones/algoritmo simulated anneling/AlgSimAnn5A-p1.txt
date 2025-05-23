@@ -1,0 +1,67 @@
+Primera parte:
+  Cuidades y Coordenadas:
+    Perú: (5, 25),
+    Chile: (10, 5),
+    Colombia: (15, 35),
+    Bolivia: (20, 20),
+    Argentina: (30, 10),
+    Venezuela: (35, 40),
+    Brasil: (40, 25)
+
+  Fase 1: Inicializar Temperatura
+    Establecemos los datos:
+    Temp = 1000
+    Speed = 0.003
+
+  Fase 2: Establecer Tour Aleatorio
+    Bolivia - Colombia - Venezuela - Brasil - Argentina - Chile - Perú
+    1 - 2 - 3 - 4 - 5 - 6 - 7
+
+  Fase 3: Inicializar Tours
+    TActual = 1 - 2 - 3 - 4 - 5 - 6 - 7
+    TMejor = 1 - 2 - 3 - 4 - 5 - 6 - 7
+    TNuevo = 1 - 2 - 3 - 4 - 5 - 6 - 7
+
+  Fase 4: Elegir nodos
+    1er nodo: 4 = Brasil
+    2do nodo: 6 = Chile
+
+  Fase 5: Establecer Nuevo Tour
+    Invertirmos la posición de los dos.
+    TNuevo -> TNuevo = 1 - 2 - 3 - 6 - 5 - 4 - 7
+
+  Fase 6: Energía
+    EActual = 15.81 + 20.62 + 15.81 + 18.03 + 20.62 + 20.62 + 15.81 = 127.32
+    ENueva = 15.81 + 20.62 + 43.01 + 20.62 + 18.03 + 35.00 + 15.81 = 168.90
+
+  Fase 7: Función de aceptación
+  Es ENueva < EActual => 168.90 < 127.32 ?
+    Si. Entonces su prob es 1
+    No. Entonces:
+      P = e^(-E/T)
+      P = e^((127.32 - 168.90)/1000)
+      P = 0.96 = prob
+
+    Si la prob > 0.45 => 0.96 > 0.45 ?
+      Si. Entonces EActual = ENuevo
+      -> EActual = 168.90
+
+  Fase 8: El mejor
+  Si EActual < EMejor => 168.90 < 127.32 ?
+    Si. Entonces EMejor = EActual
+
+  En este caso, EMejor no cambia.
+
+  Fase 9: Actualizar temperatura
+  Se actualiza la temperatura al finalizar la iteración
+  Temp = (1 - Speed)*Temp
+  Temp = (1 - 0.003)*1000
+  Temp = 997
+
+Resultados de la primera itereación:
+  EActual = 168.90
+  TActual = 1 - 2 - 3 - 6 - 5 - 4 - 7
+  EMejor = 127.32
+  TMejor = 1 - 2 - 3 - 4 - 5 - 6 - 7
+  ENuevo = 168.90
+  TNuevo = 1 - 2 - 3 - 6 - 5 - 4 - 7
